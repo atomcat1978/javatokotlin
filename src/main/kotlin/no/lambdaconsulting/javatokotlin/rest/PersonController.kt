@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController
 class PersonController(val service: PersonService) {
 
     @GetMapping
-    fun listPersons() : ResponseEntity<List<PersonSummary>> = ResponseEntity.ok(service.findAll())
+    fun listPersons() = ResponseEntity.ok(service.findAll())
 
 
     @GetMapping("person/{personId}")
-    fun person(@PathVariable("personId") personId : Int) : ResponseEntity<PersonDetails> = ResponseEntity.ok(service.getDetails(personId))
+    fun person(@PathVariable("personId") personId : Int) = ResponseEntity.ok(service.getDetails(personId))
 
 }
