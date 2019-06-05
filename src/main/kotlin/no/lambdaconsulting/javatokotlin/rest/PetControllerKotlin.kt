@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/petkotlin")
+@RequestMapping("/pet")
 class PetControllerKotlin(val petService : PetService) {
 
     @GetMapping(path = ["/{petId}"], produces = ["application/json;charset=UTF-8"])
