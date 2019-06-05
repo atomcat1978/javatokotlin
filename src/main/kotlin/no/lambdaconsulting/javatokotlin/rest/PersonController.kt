@@ -1,5 +1,7 @@
 package no.lambdaconsulting.javatokotlin.rest
 
+import no.lambdaconsulting.javatokotlin.domain.PersonDetails
+import no.lambdaconsulting.javatokotlin.domain.PersonSummary
 import no.lambdaconsulting.javatokotlin.service.PersonService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -11,12 +13,14 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping(produces = ["application/json;charset=UTF-8"])
 class PersonController(val service: PersonService) {
 
+    /* FIX> Specified return type explicitly since it is a public API function of the component */
     @GetMapping
-    fun listPersons() = ResponseEntity.ok(service.findAll())
+    fun listPersons(): ResponseEntity<List<PersonSummary>> = ResponseEntity.ok(service.findAll())
 
 
+    /* FIX> Specified return type explicitly since it is a public API function of the component */
     @GetMapping("person/{personId}")
-    fun person(@PathVariable("personId") personId : Int) = service.getDetails(personId)?.let {
+    fun person(@PathVariable("personId") personId: Int): ResponseEntity<PersonDetails> = service.getDetails(personId)?.let {
         ResponseEntity.ok(it)
     } ?: ResponseEntity.notFound().build()
 }

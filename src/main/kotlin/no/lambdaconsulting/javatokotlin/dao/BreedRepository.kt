@@ -11,11 +11,10 @@ interface BreedDao {
 @Repository
 class BreedDaoJdbcTemplate(private val jdbcTemplate: JdbcTemplate) : BreedDao {
 
-    override fun getById(id: Int) = jdbcTemplate.queryForObject(
-            "SELECT id, name FROM breed WHERE id = ?",
-            arrayOf(id))
-            { res, _ ->
-                Breed(res.getInt("id"), res.getString("name"))
-            }
-
+    /* FIX> Specified return type explicitly since it is a public API function of the component */
+    override fun getById(id: Int): Breed? = jdbcTemplate.queryForObject(
+        "SELECT id, name FROM breed WHERE id = ?",
+        arrayOf(id)) { res, _ ->
+            Breed(res.getInt("id"), res.getString("name"))
+        }
 }

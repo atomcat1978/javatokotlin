@@ -13,14 +13,12 @@ import javax.sql.DataSource
 class AppConfig {
 
     @Bean
-    fun dataSource(): DataSource =
-            EmbeddedDatabaseBuilder()
-                    .setType(EmbeddedDatabaseType.H2)
-                    .addScript("db/sql/create-db.sql")
-                    .addScript("db/sql/insert-data.sql")
-                    .build()
+    fun dataSource(): DataSource = EmbeddedDatabaseBuilder()
+        .setType(EmbeddedDatabaseType.H2)
+        .addScript("db/sql/create-db.sql")
+        .addScript("db/sql/insert-data.sql")
+        .build()
 
     @Bean
-    fun jdbcTemplate(): JdbcTemplate =
-            JdbcTemplate(dataSource())
+    fun jdbcTemplate(): JdbcTemplate = JdbcTemplate(dataSource())
 }

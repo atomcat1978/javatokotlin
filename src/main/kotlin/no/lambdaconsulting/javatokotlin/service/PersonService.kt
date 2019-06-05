@@ -9,9 +9,8 @@ import org.springframework.stereotype.Service
 @Service
 class PersonService(private val personDao: PersonDao, private val petDao: PetDao) {
 
-    fun findAll(): List<PersonSummary> {
-        return personDao.findAll()
-    }
+    /* FIX> Turned into single-expression function */
+    fun findAll(): List<PersonSummary> = personDao.findAll()
 
     /* FIX> Made a bit more fluent and easier to read. */
     fun getDetails(id: Int): PersonDetails? = personDao.getById(id)?.let { personSummary ->

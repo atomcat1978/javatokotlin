@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/pet")
-class PetControllerKotlin(val petService : PetService) {
+class PetControllerKotlin(val petService: PetService) {
 
+    /* FIX> Increased readability. */
     @GetMapping(path = ["/{petId}"], produces = ["application/json;charset=UTF-8"])
-    fun getPet(@PathVariable("petId") petId : Int) : ResponseEntity<PetDetails> = petService.getDetails(petId)?.let {ResponseEntity.ok(it)} ?: ResponseEntity.notFound().build()
+    fun getPet(@PathVariable("petId") petId: Int): ResponseEntity<PetDetails> = petService.getDetails(petId)?.let {
+        ResponseEntity.ok(it)
+    } ?: ResponseEntity.notFound().build()
 }

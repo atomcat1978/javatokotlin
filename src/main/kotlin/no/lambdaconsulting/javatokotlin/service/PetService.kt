@@ -10,10 +10,9 @@ class PetService(private val petDao: PetDao, private val breedDao: BreedDao) {
 
     fun getDetails(id: Int) = petDao.getById(id)?.let { petSummary ->
         PetDetails(
-                petSummary.id,
-                petSummary.name,
-                breedDao.getById(petSummary.breedId)
+            petSummary.id,
+            petSummary.name,
+            breedDao.getById(petSummary.breedId)
         )
     }
-
 }
