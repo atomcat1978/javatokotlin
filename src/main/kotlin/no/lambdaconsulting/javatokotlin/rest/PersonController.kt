@@ -16,6 +16,7 @@ class PersonController(val service: PersonService) {
 
 
     @GetMapping("person/{personId}")
-    fun person(@PathVariable("personId") personId : Int) = ResponseEntity.ok(service.getDetails(personId))
-
+    fun person(@PathVariable("personId") personId : Int) = service.getDetails(personId)?.let {
+        ResponseEntity.ok(it)
+    } ?: ResponseEntity.notFound().build()
 }

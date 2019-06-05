@@ -13,14 +13,13 @@ class PersonService(private val personDao: PersonDao, private val petDao: PetDao
         return personDao.findAll()
     }
 
-    fun getDetails(id: Int): PersonDetails {
-        val personSummary = personDao.getById(id)
-        val petSummaries = petDao.findByPerson(id)
-        return PersonDetails(
-                id,
-                personSummary.firstName,
-                personSummary.lastName,
-                petSummaries
+    /* FIX> Made a bit more fluent and easier to read. */
+    fun getDetails(id: Int): PersonDetails? = personDao.getById(id)?.let { personSummary ->
+        PersonDetails(
+            id,
+            personSummary.firstName,
+            personSummary.lastName,
+            petDao.findByPerson(id)
         )
     }
 }
