@@ -14,5 +14,5 @@ import org.springframework.web.bind.annotation.RestController
 class PetControllerKotlin(val petService : PetService) {
 
     @GetMapping(path = ["/{petId}"], produces = ["application/json;charset=UTF-8"])
-    fun getPet(@PathVariable("petId") petId : Int) : ResponseEntity<PetDetails> = ResponseEntity.ok(petService.getDetails(petId))
+    fun getPet(@PathVariable("petId") petId : Int) : ResponseEntity<PetDetails> = petService.getDetails(petId)?.let {ResponseEntity.ok(it)} ?: ResponseEntity.notFound().build()
 }

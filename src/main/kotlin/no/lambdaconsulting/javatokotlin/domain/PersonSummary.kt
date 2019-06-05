@@ -1,3 +1,3 @@
 package no.lambdaconsulting.javatokotlin.domain
 
-data class PersonSummary(private val id: Int, private val firstName: String, private val lastName: String)
+data class PersonSummary(val id: Int, val firstName: String, val lastName: String)
