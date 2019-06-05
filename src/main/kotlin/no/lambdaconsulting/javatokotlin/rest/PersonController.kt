@@ -1,7 +1,5 @@
 package no.lambdaconsulting.javatokotlin.rest
 
-import no.lambdaconsulting.javatokotlin.domain.PersonDetails
-import no.lambdaconsulting.javatokotlin.domain.PersonSummary
 import no.lambdaconsulting.javatokotlin.service.PersonService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
