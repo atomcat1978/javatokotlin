@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 @Service
 class PetService(private val petDao: PetDao, private val breedDao: BreedDao) {
 
-    fun getDetails(id: Int) = petDao.getById(id).let { petSummary ->
+    fun getDetails(id: Int) = petDao.getById(id)?.let { petSummary ->
         PetDetails(
                 petSummary.id,
                 petSummary.name,
